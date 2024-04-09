@@ -1,0 +1,58 @@
+update
+<form action="/user/updateuser" method="post" class="sign-up-form" enctype="multipart/form-data">
+    <h2 class="title">update</h2>
+    <div class="input-field">
+      <i class="fas fa-user"></i>
+      <input type="text" name="username" placeholder="UserName" value="<%=user.username%>"/>
+    </div>
+    <div class="input-field">
+      <i class="fas fa-envelope"></i>
+      <input type="email" name="email" placeholder="Email" value="<%=user.email%>"/>
+    </div>
+    <div class="input-field">
+      <i class="fas fa-lock"></i>
+      <input type="password" name="password" placeholder="Password" />
+    </div>
+    <div class="input-field">
+      <i class="fas fa-lock"></i>
+      <input type="file" name="avatar" onchange="getImagePreview(event)" />
+      <div id="preview"></div>
+    </div>
+
+    <% if(errorMessage) {%>
+    <div style="color: red"><%=errorMessage%></div>
+    <% } %>
+    <button type="submit" class="btn" value="Sign up">Update</button>
+    <!-- <input type="submit" class="btn" value="Sign up" /> -->
+    <p class="social-text" style="color: #ddffff">
+      Or Sign up with social platforms
+    </p>
+    <div class="social-media">
+      <a href="#" class="social-icon">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="#" class="social-icon">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="#" class="social-icon">
+        <i class="fab fa-google"></i>
+      </a>
+      <a href="#" class="social-icon">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+    </div>
+  </form>
+
+
+
+
+
+  <script>
+    function getImagePreview(event) {
+ let image = URL.createObjectURL(event.target.files[0])
+let imagediv = document.getElementById('preview');
+let newimg = document.createElement('img');
+newimg.src = image; 
+imagediv.appendChild(newimg);
+}
+</script>

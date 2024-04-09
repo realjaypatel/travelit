@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <%=user%>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .profile {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .profile img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+        .profile h1 {
+            margin: 0;
+        }
+        .items {
+            margin-top: 20px;
+        }
+        .item {
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+        }
+        .item:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="profile">
+            
+            <img src="/uploads/<%=user.avatar%>" alt="User Photo">
+            
+            <h1><%=user.name%></h1>
+            <a href="/auth/update"> edit user profile</a>
+        </div>
+        <div class="items">
+            <div class="item">Item 1</div>
+            <div class="item">Item 2</div>
+            <div class="item">Item 3</div>
+            <!-- Add more items as needed -->
+        </div>
+    </div>
+
+</body>
+</html>
