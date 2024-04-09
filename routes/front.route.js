@@ -1,13 +1,10 @@
 import express from "express";
 import {verifyToken} from "../middleware/verifyToken.js";
-import { Home,Register,Login } from "../controllers/front.controller.js";
-
+import { Home,Profile, Search } from "../controllers/front.controller.js";
+import {passthroughToken} from "../middleware/passthroughToken.js"
 const router = express.Router();
 
-router.get("/", Home);
-router.get("/register", Register);
-router.post("/login", Login);
-// router.put("/:id", updatePost);
-// router.delete("/:id", deletePost);
-
+router.get("/",passthroughToken,Home);
+router.get("/profile",verifyToken,Profile);
+router.get("/search",passthroughToken,Search);
 export default router;

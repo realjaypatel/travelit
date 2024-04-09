@@ -114,8 +114,8 @@ export const logout = (req, res) => {
 };
 
 export const register_ejs=  (req,res)=>{
-  res.render('register',{errorMessage:''})
+  res.render('register',{errorMessage:'',user:''},)
   };
 export const login_ejs=(req,res)=>{
-  res.render('login',{errorMessage:''})
+  res.render('login',{errorMessage:'',user:''})
   };

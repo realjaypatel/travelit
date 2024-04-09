@@ -1,6 +1,4 @@
-
-
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -12,12 +10,12 @@
   <!-- 
     - favicon
   -->
-  <link rel="shortcut icon" href="/public/favicon.svg" type="image/svg+xml">
+  <link rel="shortcut icon" href="./public/favicon.svg" type="image/svg+xml">
 
   <!-- 
     - custom css link
   -->
-  <link rel="stylesheet" href="/public/assets/css/style.css">
+  <link rel="stylesheet" href="./public/assets/css/style.css">
 
   <!-- 
     - google font link
@@ -68,20 +66,21 @@
           <div class="hero-form-wrapper">
             <div class="form-tab">
 
-              <button class="tab-btn active" data-tab-btn>Register</button>
-              <button  class="tab-btn" data-tab-btn><a href="/auth/login">Login</a></button>
+              <button class="tab-btn active" data-tab-btn>Buy</button>
+              <button class="tab-btn" data-tab-btn>Sell</button>
+              <button class="tab-btn" data-tab-btn>Rent</button>
 
             </div>
 
 
-            register
-            <form action="/auth/register" method="post"  class="hero-form">
+            
+            <form action="/search" method="GET" class="hero-form">
 
               <div class="input-wrapper">
 
-                <label for="search" class="input-label">UserName : </label>
+                <label for="search" class="input-label">City : *</label>
 
-                <input type="text" name="username" id="search" placeholder="Search your home" required
+                <input type="text" name="city" id="search" placeholder="Search your home" required
                   class="input-field">
 
                 <ion-icon name="search-outline"></ion-icon>
@@ -89,30 +88,53 @@
               </div>
 
               <div class="input-wrapper">
+                <label for="category" class="input-label">Select Categories:</label>
 
-                <label for="search" class="input-label">Email : </label>
+                <select name="category" id="category" class="dropdown-list">
 
-                <input type="text" name="email" id="search" placeholder="Search your home" required
-                  class="input-field">
 
-                <ion-icon name="search-outline"></ion-icon>
-
+                  <option value="apartment">Apartment</option>
+                  <option value="house">House</option>
+                  <option value="condo">Condo</option>
+                  <option value="land">Land</option>
+                </select>
               </div>
+
               <div class="input-wrapper">
+                <label for="min-price" class="input-label">Min Price :</label>
 
-                <label for="search" class="input-label">Password : </label>
+                <select name="minPrice" id="min-price" class="dropdown-list">
 
-                <input type="text" name="password" id="search" placeholder="Search your home" required
-                  class="input-field">
+                  <option value="min price">Min Price</option>
+                  <option value="500">500</option>
+                  <option value="1000">1000</option>
+                  <option value="2000">2000</option>
+                  <option value="3000">3000</option>
+                  <option value="4000">4000</option>
+                  <option value="5000">5000</option>
+                  <option value="6000">6000</option>
 
-                <ion-icon name="search-outline"></ion-icon>
-
+                </select>
               </div>
-              
-              <% if(errorMessage) {%>
-                <div style="color: red"><%=errorMessage%></div>
-                <% } %>
-              <button type="submit" class="btn btn-primary">Register now</button>
+
+              <div class="input-wrapper">
+                <label for="max-price" class="input-label">Max Price :</label>
+
+                <select name="maxPrice" id="max-price" class="dropdown-list">
+
+                  <option value="max price">Max Price</option>
+                  <option value="500">500</option>
+                  <option value="1000">1000</option>
+                  <option value="2000">2000</option>
+                  <option value="3000">3000</option>
+                  <option value="4000">4000</option>
+                  <option value="5000">5000</option>
+                  <option value="6000">6000</option>
+
+                </select>
+              </div>
+
+              <button type="submit" class="btn btn-primary">Search now</button>
 
             </form>
           </div>
@@ -132,7 +154,7 @@
         <div class="container">
 
           <div class="about-banner img-holder" style="--width: 600; --height: 700;">
-            <img src="/public/assets/images/about-banner.jpg" width="600" height="700" loading="lazy" alt="about banner"
+            <img src="./public/assets/images/about-banner.jpg" width="600" height="700" loading="lazy" alt="about banner"
               class="img-cover">
 
             <button class="play-btn" aria-label="play video">
@@ -254,7 +276,7 @@
               <div class="property-card">
 
                 <figure class="card-banner img-holder" style="--width: 800; --height: 533;">
-                  <img src="/public/assets/images/property-1.jpg" width="800" height="533" loading="lazy"
+                  <img src="./public/assets/images/property-1.jpg" width="800" height="533" loading="lazy"
                     alt="10765 Hillshire Ave, Baton Rouge, LA 70810, USA" class="img-cover">
                 </figure>
 
@@ -333,7 +355,7 @@
               <div class="property-card">
 
                 <figure class="card-banner img-holder" style="--width: 800; --height: 533;">
-                  <img src="/public/assets/images/property-2.jpg" width="800" height="533" loading="lazy"
+                  <img src="./public/assets/images/property-2.jpg" width="800" height="533" loading="lazy"
                     alt="59345 STONEWALL DR, Plaquemine, LA 70764, USA" class="img-cover">
                 </figure>
 
@@ -412,7 +434,7 @@
               <div class="property-card">
 
                 <figure class="card-banner img-holder" style="--width: 800; --height: 533;">
-                  <img src="/public/assets/images/property-3.jpg" width="800" height="533" loading="lazy"
+                  <img src="./public/assets/images/property-3.jpg" width="800" height="533" loading="lazy"
                     alt="3723 SANDBAR DR, Addis, LA 70710, USA" class="img-cover">
                 </figure>
 
@@ -491,7 +513,7 @@
               <div class="property-card">
 
                 <figure class="card-banner img-holder" style="--width: 800; --height: 533;">
-                  <img src="/public/assets/images/property-4.jpg" width="800" height="533" loading="lazy"
+                  <img src="./public/assets/images/property-4.jpg" width="800" height="533" loading="lazy"
                     alt="LOT 21 ROYAL OAK DR, Prairieville, LA 70769, USA" class="img-cover">
                 </figure>
 
@@ -570,7 +592,7 @@
               <div class="property-card">
 
                 <figure class="card-banner img-holder" style="--width: 800; --height: 533;">
-                  <img src="/public/assets/images/property-5.jpg" width="800" height="533" loading="lazy"
+                  <img src="./public/assets/images/property-5.jpg" width="800" height="533" loading="lazy"
                     alt="710 BOYD DR, Unit #1102, Baton Rouge, LA 70808, USA" class="img-cover">
                 </figure>
 
@@ -649,7 +671,7 @@
               <div class="property-card">
 
                 <figure class="card-banner img-holder" style="--width: 800; --height: 533;">
-                  <img src="/public/assets/images/property-6.jpg" width="800" height="533" loading="lazy"
+                  <img src="./public/assets/images/property-6.jpg" width="800" height="533" loading="lazy"
                     alt="5133 MCLAIN WAY, Baton Rouge, LA 70809, USA" class="img-cover">
                 </figure>
 
@@ -991,7 +1013,7 @@
   <!-- 
     - custom js link
   -->
-  <script src="/public/assets/js/script.js" defer></script>
+  <script src="./public/assets/js/script.js" defer></script>
 
   <!-- 
     - ionicon link
@@ -1002,11 +1024,3 @@
 </body>
 
 </html>
-
-
-
-<style>
-  .hero-form{
-    grid-template-columns: none;
-  }
-</style>

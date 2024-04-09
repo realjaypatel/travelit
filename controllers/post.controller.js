@@ -42,6 +42,9 @@ export const getPost = async (req, res) => {
         },
       },
     });
+    console.log('post',post)
+    return res.render('PostPage',{post:post})
+
 
     const token = req.cookies?.token;
 
@@ -68,7 +71,33 @@ export const getPost = async (req, res) => {
 };
 
 export const addPost = async (req, res) => {
-  const body = req.body;
+
+  let body = {
+    postData: {
+      title: req.body.title,
+      price: parseInt(req.body.price),
+      address: req.body.address,
+      city: req.body.city,
+      bedroom: parseInt(req.body.bedroom),
+      bathroom: parseInt(req.body.bathroom),
+      type: req.body.type,
+      property: req.body.property,
+      latitude: req.body.latitude,
+      longitude: req.body.longitude,
+      // images: images,
+    },
+    postDetail: {
+      desc: req.body.desc,
+      utilities: req.body.utilities,
+      pet: req.body.pet,
+      income: req.body.income,
+      size: parseInt(req.body.size),
+      school: parseInt(req.body.school),
+      bus: parseInt(req.body.bus),
+      restaurant: parseInt(req.body.restaurant),
+    }
+  }
+  
   const tokenUserId = req.userId;
 
   try {
@@ -79,7 +108,7 @@ export const addPost = async (req, res) => {
         postDetail: {
           create: body.postDetail,
         },
-      },
+      }
     });
     res.status(200).json(newPost);
   } catch (err) {
@@ -121,3 +150,17 @@ export const deletePost = async (req, res) => {
   }
 };
 
+export const addPost_ejs = async (req, res) => {
+  const id = req.userId;
+  try {
+    const user = await prisma.user.findUnique({
+      where: { id },
+    });
+    res.status(200).render('addPost',{user:user,errorMessage:''})
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Failed to get user! update page" });
+  }
+
+};

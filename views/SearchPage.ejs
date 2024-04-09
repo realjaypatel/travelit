@@ -1,0 +1,24 @@
+Search page
+<form action="/search" method="GET">
+    <div class="item">
+        <label for="property">Property</label>
+        <select name="property" id="property">
+            <option value="apartment">Apartment</option>
+            <option value="house">House</option>
+            <option value="condo">Condo</option>
+            <option value="land">Land</option>
+        </select>
+    </div>
+    <input type="text" name="city" placeholder="City">
+    <input type="number" name="minPrice" min="0" max="10000000" placeholder="Min Price">
+    <input type="number" name="maxPrice" min="0" max="10000000" placeholder="Max Price">
+    <button type="submit"> submit</button>
+</form>
+
+<%= data %>
+
+<% for (let i = 0; i < data.length; i++) { %>
+    <li><%= data[i].title %></li>
+<% } %>
+
+<%- include('map'),{data:data } %>

@@ -1,67 +1,484 @@
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Profile</title>
-    <%=user%>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
-        }
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .profile {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .profile img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 10px;
-        }
-        .profile h1 {
-            margin: 0;
-        }
-        .items {
-            margin-top: 20px;
-        }
-        .item {
-            border-bottom: 1px solid #ccc;
-            padding: 10px 0;
-        }
-        .item:last-child {
-            border-bottom: none;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EventEase - Choose your dream place</title>
+
+  <!-- 
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./public/favicon.svg" type="image/svg+xml">
+
+  <!-- 
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./public/assets/css/style.css">
+
+  <!-- 
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
 </head>
-<body>
-    <div class="container">
-        <div class="profile">
-            
-            <img src="/uploads/<%=user.avatar%>" alt="User Photo">
-            
-            <h1><%=user.name%></h1>
-            <a href="/auth/update"> edit user profile</a>
+
+<body id="top">
+
+  <!-- 
+    - #HEADER
+  -->
+
+  <%- include('includes/header',{data:user}) %>
+
+
+
+
+
+
+  <main>
+    <article class="article">
+
+      <!-- 
+        - #HERO
+      -->
+
+
+
+
+
+
+      <!-- 
+        - #ABOUT
+      -->
+
+      <section class="section about" aria-label="about">
+        <div class="container">
+
+          <div class="about-banner img-holder" style="--width: 500; --height: 500;">
+            <img src="/uploads/<%=user.avatar%>" width="600" height="700" loading="lazy" alt="about banner"
+              class="img-cover">
+
+            <button class="play-btn" aria-label="play video">
+              <ion-icon name="play" aria-hidden="true"></ion-icon>
+            </button>
+          </div>
+
+          <div class="about-content">
+
+            <h2 class="h2 section-title">User Details: <%=user.username%></h2>
+
+            <p class="section-text">
+                Username: <%=user.username%> <br />
+                email:<%=user.email%>
+
+            </p>
+
+            <a href="#" class="btn btn-primary">Edit UserDetails</a>
+
+          </div>
+
         </div>
-        <div class="items">
-            <div class="item">Item 1</div>
-            <div class="item">Item 2</div>
-            <div class="item">Item 3</div>
-            <!-- Add more items as needed -->
-        </div>
+      </section>
+
+
+
+
+
     </div>
 
+      <section class="section property" aria-label="property">
+        <div class="container">
+        <div class="upper">
+            <h2 class="h2 section-title">Your Services</h2>
+            <a href="/post/addpost" class="btn btn-primary">Add Service</a>
+  
+        </div>
+
+
+          <p class="section-text">
+            Add your services and share with your local neghbours
+          </p>
+          <ul class="property-list">
+            <% for (let i = 0; i < posts.length; i++) { %>
+                <li>
+                    <div class="property-card">
+      
+                      <figure class="card-banner img-holder" style="--width: 800; --height: 533;">
+                        <img src="./public/assets/images/property-1.jpg" width="800" height="533" loading="lazy"
+                          alt="10765 Hillshire Ave, Baton Rouge, LA 70810, USA" class="img-cover">
+                      </figure>
+      
+                      <button class="card-action-btn" aria-label="add to favourite">
+                        <ion-icon name="heart" aria-hidden="true"></ion-icon>
+                      </button>
+      
+                      <div class="card-content">
+      
+                        <h3 class="h3">
+                          <a href="#" class="card-title"><%= posts[i].title %></a>
+                        </h3>
+      
+                        <ul class="card-list">
+      
+                          <li class="card-item">
+                            <div class="item-icon">
+                              <ion-icon name="cube-outline"></ion-icon>
+                            </div>
+      
+                            <span class="item-text"><%= posts[i].postDetail.size %>inr</span>
+                          </li>
+      
+                          <li class="card-item">
+                            <div class="item-icon">
+                              <ion-icon name="bed-outline"></ion-icon>
+                            </div>
+      
+                            <span class="item-text"><%= posts[i].bedroom %> Beds</span>
+                          </li>
+      
+                          <li class="card-item">
+                            <div class="item-icon">
+                              <ion-icon name="man-outline"></ion-icon>
+                            </div>
+      
+                            <span class="item-text"><%= posts[i].bathroom %> Baths</span>
+                          </li>
+      
+                        </ul>
+      
+                        <div class="card-meta">
+      
+                          <div>
+                            <span class="meta-title">Price</span>
+      
+                            <span class="meta-text">INR<%= posts[i].price %></span>
+                          </div>
+      
+                          <div>
+                            <span class="meta-title">Rating</span>
+      
+                            <span class="meta-text">
+      
+                              <div class="rating-wrapper">
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                              </div>
+      
+                              <span>5.0(30)</span>
+      
+                            </span>
+                          </div>
+      
+                        </div>
+      
+                      </div>
+      
+                    </div>
+                  </li>
+ 
+<% } %>
+      
+
+       
+          </ul>
+
+        </div>
+      </section>
+
+
+
+  
+      <!-- 
+        - #CONTACT
+      -->
+
+      <section class="section contact" aria-label="contact">
+        <div class="container">
+
+          <h2 class="h2 section-title">Have Question ? Get in touch!</h2>
+
+          <p class="section-text">
+            A great plateform to buy, sell and rent your properties without any agent or commisions.
+          </p>
+
+          <button class="btn btn-primary">
+            <ion-icon name="call-outline"></ion-icon>
+
+            <span class="span">Contact us</span>
+          </button>
+
+        </div>
+      </section>
+
+
+
+
+
+      <!-- 
+        - #NEWSLETTER
+      -->
+
+      <section class="newsletter" aria-label="newsletter">
+        <div class="container">
+
+          <div class="wrapper">
+            <h2 class="h2 section-title">Subscribe to Newsletter!</h2>
+
+            <p class="section-text">Subscribe to get latest updates and information.</p>
+          </div>
+
+          <form action="" class="newsletter-form">
+            <input type="email" name="email_address" placeholder="Enter your email :" aria-label="Enter your email"
+              required class="email-field">
+
+            <button type="submit" class="btn btn-secondary">Subscribe</button>
+          </form>
+
+        </div>
+      </section>
+
+    </article>
+  </main>
+
+
+
+
+
+  <!-- 
+    - #FOOTER
+  -->
+
+  <footer class="footer">
+
+    <div class="footer-top">
+      <div class="container">
+
+        <div class="footer-brand">
+
+          <a href="#" class="logo">
+            <ion-icon name="business-outline"></ion-icon> EventEase
+          </a>
+
+          <p class="footer-text">
+            A great plateform to buy, sell and rent your properties without any agent or commisions.
+          </p>
+
+        </div>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title">Company</p>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">
+              <ion-icon name="chevron-forward"></ion-icon>
+
+              <span class="span">About us</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">
+              <ion-icon name="chevron-forward"></ion-icon>
+
+              <span class="span">Services</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">
+              <ion-icon name="chevron-forward"></ion-icon>
+
+              <span class="span">Pricing</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">
+              <ion-icon name="chevron-forward"></ion-icon>
+
+              <span class="span">Blog</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">
+              <ion-icon name="chevron-forward"></ion-icon>
+
+              <span class="span">Login</span>
+            </a>
+          </li>
+
+        </ul>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title">Useful Links</p>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">
+              <ion-icon name="chevron-forward"></ion-icon>
+
+              <span class="span">Terms of Services</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">
+              <ion-icon name="chevron-forward"></ion-icon>
+
+              <span class="span">Privacy Policy</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">
+              <ion-icon name="chevron-forward"></ion-icon>
+
+              <span class="span">Listing</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">
+              <ion-icon name="chevron-forward"></ion-icon>
+
+              <span class="span">Contact</span>
+            </a>
+          </li>
+
+        </ul>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title">Contact Details</p>
+          </li>
+
+          <li class="footer-item">
+            <ion-icon name="location-outline"></ion-icon>
+
+            <address class="address">
+              C/54 Northwest Freeway,<br>
+              Suite 558,<br>
+              Houston, USA 485
+              <a href="#" class="address-link">View on Google map</a>
+            </address>
+          </li>
+
+          <li class="footer-item">
+            <ion-icon name="mail-outline"></ion-icon>
+
+            <a href="mailto:contact@example.com" class="footer-link">contact@example.com</a>
+          </li>
+
+          <li class="footer-item">
+            <ion-icon name="call-outline"></ion-icon>
+
+            <a href="tel:+152534468854" class="footer-link">+152 534-468-854</a>
+          </li>
+
+        </ul>
+
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+
+        <p class="copyright">
+          &copy; 2022 Realvine. All Right Reserved by <a href="#" class="copyright-link">codewithsadee</a>.
+        </p>
+
+        <ul class="social-list">
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-twitter"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-linkedin"></ion-icon>
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+    </div>
+
+  </footer>
+
+
+
+
+
+  <!-- 
+    - #BACK TO TOP
+  -->
+
+  <a href="#top" class="back-top-btn" aria-label="back to top" data-back-top-btn>
+    <ion-icon name="arrow-up" aria-hidden="true"></ion-icon>
+  </a>
+
+
+
+
+
+  <!-- 
+    - custom js link
+  -->
+  <script src="./public/assets/js/script.js" defer></script>
+
+  <!-- 
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
 </body>
+
 </html>
+
+<style>
+    .upper{
+        display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    }
+</style>
