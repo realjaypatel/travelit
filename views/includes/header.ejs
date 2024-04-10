@@ -35,9 +35,8 @@
         </ul>
       </nav>
       <% if (user){%>
-        <%=user%>
-        <a href="/profile" class="btn btn-secondary">Profile</a>
-        <%=user.username%>
+        <a href="/profile" class="btn btn-secondary"><%=user.username%></a>
+        
     <% }else{%>
         <a href="/auth/register" class="btn btn-secondary">Signup</a>
 

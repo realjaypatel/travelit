@@ -51,7 +51,7 @@ export const Profile = async (req, res) => {
 };
 
 export const Search = async (req, res) => {
-  // return res.json({})
+
   const query = req.query;
   console.log(query)
   try {
@@ -82,7 +82,7 @@ export const Search = async (req, res) => {
 //         }
 //       }
 // ]
-    return res.render('SearchPage',{data:posts});
+    return res.render('SearchPage',{data:posts,user:req.user});
 
   } catch (err) {
     console.log('err',err);

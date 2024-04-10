@@ -1,24 +1,16 @@
-* {
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    padding: 0;
-    margin: 0;
-}
-body {
-    font-family: 'Nunito Sans', sans-serif;
-}
-main {
+
+.mappart {
     display: flex;
 }
 .store-list {
-    width: 25%;
+    width: 60%;
     height: 100vh;
     overflow: auto;
     background: whitesmoke;
 }
 #map {
     height: 100vh;
-    width: 75%;
+    width: 40%;
 }
 .store-list .heading {
     background: #ff6900;
