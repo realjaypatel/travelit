@@ -41,7 +41,6 @@ export const getPost = async (req, res) => {
     const post = await prisma.post.findUnique({
       where: { id },
       include: {
-        postDetail: true,
         user: {
           select: {
             username: true,
@@ -108,8 +107,6 @@ export const addPost = async (req, res) => {
       latitude: req.body.latitude,
       longitude: req.body.longitude,
       images: images,
-    },
-    postDetail: {
       desc: req.body.desc,
       utilities: req.body.utilities,
       pet: req.body.pet,
@@ -128,9 +125,6 @@ export const addPost = async (req, res) => {
       data: {
         ...body.postData,
         userId: tokenUserId,
-        postDetail: {
-          create: body.postDetail,
-        },
       }
     });
     res.status(200).json(newPost);
@@ -161,7 +155,16 @@ export const deletePost = async (req, res) => {
     if (post.userId !== tokenUserId) {
       return res.status(403).json({ message: "Not Authorized!" });
     }
-
+    // deleting images
+    try {
+        for(let x = 0; x < post.images.length; x++){
+          FileDelete(post.images[x]);
+      
+        }
+      }
+        catch (error) {
+      console.log(error)
+        }
     await prisma.post.delete({
       where: { id },
     });

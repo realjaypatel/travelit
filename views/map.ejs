@@ -9,6 +9,7 @@
     #map {
       height: 100%;
       width: 100%;
+      z-index: 0;
     }
     .mapclass{
       max-width: 2200px;
@@ -88,7 +89,7 @@ for (var i = 0; i < storeData.length; i++) {
           "bed":storeData[i].bedroom,
           "bath":storeData[i].bathroom,
           "id":storeData[i].id,
-          "img":'https://yt3.googleusercontent.com/ytc/AIdro_k2wsQa2j9sAhjS25DyZxrhAGDJWtNZBYcLVd3uqQ=s900-c-k-c0x00ffffff-no-rj'
+          "img":storeData[i].images[i]
         }
       }
 
@@ -110,7 +111,7 @@ function generateList() {
     <li class='li'>
             <div class="card">
               <a class="imageContainer">
-                <img src="${shop.properties.img}" alt="" />
+                <img src="/uploads/${shop.properties.img}" alt="" />
               </a>
               <div class="textContainer">
                 <h2 class="title">
@@ -202,6 +203,25 @@ function flyToStore(store) {
     }, 3000);
 }
 
+let cityName =` <%- city  %>`
+function searchCity(cityName) {
+      const url = `https://nominatim.openstreetmap.org/search?city=${cityName}&format=json`;
+      fetch(url)
+          .then(response => response.json())
+          .then(data => {
+              if (data.length > 0) {
+                  const { lat, lon } = data[0];
+                  myMap.setView([lat, lon], 12);
+              } else {
+                  
+              }
+          })
+          .catch(error => {
+              console.error('Error fetching data:', error);
+          });
+  }
+searchCity(cityName)
+
 
 
 
@@ -211,3 +231,5 @@ function flyToStore(store) {
 
 <style>
 </style>
+
+

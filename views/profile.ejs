@@ -12,7 +12,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EventEase - Choose your dream place</title>
+  <title>RentIt - Choose your dream place</title>
 
   <!-- 
     - favicon
@@ -113,7 +113,7 @@
                     <div class="property-card">
       
                       <figure class="card-banner img-holder" style="--width: 800; --height: 533;">
-                        <img src="./public/assets/images/property-1.jpg" width="800" height="533" loading="lazy"
+                        <img src="/uploads/<%= posts[i].images[0] %>" width="800" height="533" loading="lazy"
                           alt="10765 Hillshire Ave, Baton Rouge, LA 70810, USA" class="img-cover">
                       </figure>
       
@@ -124,7 +124,7 @@
                       <div class="card-content">
       
                         <h3 class="h3">
-                          <a href="#" class="card-title"><%= posts[i].title %></a>
+                          <a href="/place/<%= posts[i].id %>" class="card-title"><%= posts[i].title %></a>
                         </h3>
       
                         <ul class="card-list">
@@ -134,7 +134,7 @@
                               <ion-icon name="cube-outline"></ion-icon>
                             </div>
       
-                            <span class="item-text"><%= posts[i].postDetail.size %>inr</span>
+                            <span class="item-text"><%= posts[i].size %>sqft</span>
                           </li>
       
                           <li class="card-item">
@@ -182,7 +182,36 @@
                           </div>
       
                         </div>
+                        <ul class="card-list">
       
+                          <li class="card-item">
+                            <div class="item-icon">
+                              <ion-icon name="refresh-outline"></ion-icon>
+                            </div>
+      
+                            <span class="item-text">Update </span>
+                          </li>
+      
+                          <li class="card-item">
+                            
+                            <div class="item-icon">
+                              <ion-icon name="trash-outline"></ion-icon>
+                            </div>
+                            <a href="/post/delete/<%= posts[i].id %>">
+                            <span class="item-text">Delete</span>
+                          </a>
+                          </li>
+      
+                          <li class="card-item">
+                            <div class="item-icon">
+                              <ion-icon name="eye-outline"></ion-icon>
+                            </div>
+                            <a href="/place/<%= posts[i].id %>">
+                            <span class="item-text">view</span>
+                          </a>
+                          </li>
+      
+                        </ul>
                       </div>
       
                     </div>

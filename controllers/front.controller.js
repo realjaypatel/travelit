@@ -28,10 +28,7 @@ export const Profile = async (req, res) => {
     });
     const userPosts = await prisma.post.findMany({
       where: { userId: id },
-      include: {
-        postDetail: true,
 
-      }
     });
     const saved = await prisma.savedPost.findMany({
       where: { userId: id },
@@ -55,7 +52,7 @@ export const Search = async (req, res) => {
   try {
     const posts = await prisma.post.findMany({
       where: {
-        city: query.city || undefined,
+        // city: query.city || undefined,
         type: query.type || undefined,
         property: query.property || undefined,
         bedroom: parseInt(query.bedroom) || undefined,
@@ -66,7 +63,7 @@ export const Search = async (req, res) => {
       },
     });
     
-    return res.render('SearchPage',{data:posts,user:req.userId});
+    return res.render('SearchPage',{data:posts,user:req.userId,city : query.city});
   } catch (err) {
     console.log('err',err);
       }
@@ -78,7 +75,6 @@ export const getPost = async (req, res) => {
     const post = await prisma.post.findUnique({
       where: { id },
       include: {
-        postDetail: true,
         user: {
           select: {
             username: true,

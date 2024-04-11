@@ -8,6 +8,7 @@
     #map {
       height: 100%;
       width: 100%;
+      z-index: 0;
     }
     .mapclass{
       max-width: 2200px;
@@ -71,7 +72,7 @@ for (var i = 0; i < storeData.length; i++) {
           "bed":storeData[i].bedroom,
           "bath":storeData[i].bathroom,
           "id":storeData[i].id,
-          "img":'https://yt3.googleusercontent.com/ytc/AIdro_k2wsQa2j9sAhjS25DyZxrhAGDJWtNZBYcLVd3uqQ=s900-c-k-c0x00ffffff-no-rj'
+          "img":storeData[i].images
         }
       }
 
@@ -90,7 +91,7 @@ tileLayer.addTo(myMap);
 function makePopupContent(shop) {
   return `
   <div class="popupContainer">
-          <img src=${shop.properties.img} alt="" />
+          <img src=/uploads/${shop.properties.img} alt="" />
           <div class="textContainer">
             <A href='/place/${shop.properties.id}'>${shop.properties.name}</Link>
             <span>${shop.properties.bed} bedroom</span>

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EventEase - Choose your dream place</title>
+    <title>RentIt - Choose your dream place</title>
 
     <!-- 
     - favicon
@@ -91,7 +91,7 @@
                                         </div>
                                     </div>
                                     <div class="bottom">
-                                        <%= post.postDetail.desc %>
+                                        <%= post.desc %>
                                             <!-- Assuming postDetail.desc is already sanitized -->
                                     </div>
                                 </div>
@@ -101,7 +101,7 @@
                             <div class="wrapper">
                                 <p class="title">General</p>
                                 <div class="listVertical">
-                                    <% if (post.postDetail.utilities==="owner" ) { %>
+                                    <% if (post.utilities==="owner" ) { %>
                                         <div class="feature">
                                             <ion-icon name="hammer-outline"></ion-icon>
                                             <div class="featureText">
@@ -118,7 +118,7 @@
                                                 </div>
                                             </div>
                                             <% } %>
-                                                <% if (post.postDetail.pet==="allowed" ) { %>
+                                                <% if (post.pet==="allowed" ) { %>
                                                     <div class="feature">
                                                         <ion-icon name="logo-octocat"></ion-icon>
                                                         <div class="featureText">
@@ -140,7 +140,7 @@
                                                                 <div class="featureText">
                                                                     <span>Income Policy</span>
                                                                     <p>
-                                                                        <%= post.postDetail.income %>
+                                                                        <%= post.income %>
                                                                     </p>
                                                                 </div>
                                                             </div>
@@ -150,7 +150,7 @@
                                     <div class="size">
                                         <ion-icon name="wallet-outline"></ion-icon>
                                         <span>
-                                            <%= post.postDetail.size %> sqft
+                                            <%= post.size %> sqft
                                         </span>
                                     </div>
                                     <div class="size">
@@ -173,10 +173,10 @@
                                         <div class="featureText">
                                             <span>School</span>
                                             <p>
-                                                <% if (post.postDetail.school> 999) { %>
-                                                    <%= post.postDetail.school / 1000 %> km
+                                                <% if (post.school> 999) { %>
+                                                    <%= post.school / 1000 %> km
                                                         <% } else { %>
-                                                            <%= post.postDetail.school %> m
+                                                            <%= post.school %> m
                                                                 <% } %>
                                                                     away
                                             </p>
@@ -187,7 +187,7 @@
                                         <div class="featureText">
                                             <span>Bus Stop</span>
                                             <p>
-                                                <%= post.postDetail.bus %> m away
+                                                <%= post.bus %> m away
                                             </p>
                                         </div>
                                     </div>
@@ -196,7 +196,7 @@
                                         <div class="featureText">
                                             <span>Restaurant</span>
                                             <p>
-                                                <%= post.postDetail.restaurant %> m away
+                                                <%= post.restaurant %> m away
                                             </p>
                                         </div>
                                     </div>
@@ -415,7 +415,7 @@
                     <div class="footer-brand">
 
                         <a href="#" class="logo">
-                            <ion-icon name="business-outline"></ion-icon> EventEase
+                            <ion-icon name="business-outline"></ion-icon> RentIt
                         </a>
 
                         <p class="footer-text">
