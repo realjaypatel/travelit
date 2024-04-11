@@ -10,12 +10,12 @@
   <!-- 
     - favicon
   -->
-  <link rel="shortcut icon" href="./public/favicon.svg" type="image/svg+xml">
+  <link rel="shortcut icon" href="/public/favicon.svg" type="image/svg+xml">
 
   <!-- 
     - custom css link
   -->
-  <link rel="stylesheet" href="./public/assets/css/style.css">
+  <link rel="stylesheet" href="/public/assets/css/style.css">
 
   <!-- 
     - google font link
@@ -154,7 +154,7 @@
         <div class="container">
 
           <div class="about-banner img-holder" style="--width: 600; --height: 700;">
-            <img src="./public/assets/images/about-banner.jpg" width="600" height="700" loading="lazy" alt="about banner"
+            <img src="/public/assets/images/about-banner.jpg" width="600" height="700" loading="lazy" alt="about banner"
               class="img-cover">
 
             <button class="play-btn" aria-label="play video">
@@ -276,7 +276,7 @@
               <div class="property-card">
 
                 <figure class="card-banner img-holder" style="--width: 800; --height: 533;">
-                  <img src="./public/assets/images/property-1.jpg" width="800" height="533" loading="lazy"
+                  <img src="/public/assets/images/property-1.jpg" width="800" height="533" loading="lazy"
                     alt="10765 Hillshire Ave, Baton Rouge, LA 70810, USA" class="img-cover">
                 </figure>
 
@@ -355,7 +355,7 @@
               <div class="property-card">
 
                 <figure class="card-banner img-holder" style="--width: 800; --height: 533;">
-                  <img src="./public/assets/images/property-2.jpg" width="800" height="533" loading="lazy"
+                  <img src="/public/assets/images/property-2.jpg" width="800" height="533" loading="lazy"
                     alt="59345 STONEWALL DR, Plaquemine, LA 70764, USA" class="img-cover">
                 </figure>
 
@@ -434,7 +434,7 @@
               <div class="property-card">
 
                 <figure class="card-banner img-holder" style="--width: 800; --height: 533;">
-                  <img src="./public/assets/images/property-3.jpg" width="800" height="533" loading="lazy"
+                  <img src="/public/assets/images/property-3.jpg" width="800" height="533" loading="lazy"
                     alt="3723 SANDBAR DR, Addis, LA 70710, USA" class="img-cover">
                 </figure>
 
@@ -513,7 +513,7 @@
               <div class="property-card">
 
                 <figure class="card-banner img-holder" style="--width: 800; --height: 533;">
-                  <img src="./public/assets/images/property-4.jpg" width="800" height="533" loading="lazy"
+                  <img src="/public/assets/images/property-4.jpg" width="800" height="533" loading="lazy"
                     alt="LOT 21 ROYAL OAK DR, Prairieville, LA 70769, USA" class="img-cover">
                 </figure>
 
@@ -592,7 +592,7 @@
               <div class="property-card">
 
                 <figure class="card-banner img-holder" style="--width: 800; --height: 533;">
-                  <img src="./public/assets/images/property-5.jpg" width="800" height="533" loading="lazy"
+                  <img src="/public/assets/images/property-5.jpg" width="800" height="533" loading="lazy"
                     alt="710 BOYD DR, Unit #1102, Baton Rouge, LA 70808, USA" class="img-cover">
                 </figure>
 
@@ -671,7 +671,7 @@
               <div class="property-card">
 
                 <figure class="card-banner img-holder" style="--width: 800; --height: 533;">
-                  <img src="./public/assets/images/property-6.jpg" width="800" height="533" loading="lazy"
+                  <img src="/public/assets/images/property-6.jpg" width="800" height="533" loading="lazy"
                     alt="5133 MCLAIN WAY, Baton Rouge, LA 70809, USA" class="img-cover">
                 </figure>
 
@@ -815,184 +815,8 @@
     - #FOOTER
   -->
 
-  <footer class="footer">
+  <%- include('includes/footer') %>
 
-    <div class="footer-top">
-      <div class="container">
-
-        <div class="footer-brand">
-
-          <a href="#" class="logo">
-            <ion-icon name="business-outline"></ion-icon> EventEase
-          </a>
-
-          <p class="footer-text">
-            A great plateform to buy, sell and rent your properties without any agent or commisions.
-          </p>
-
-        </div>
-
-        <ul class="footer-list">
-
-          <li>
-            <p class="footer-list-title">Company</p>
-          </li>
-
-          <li>
-            <a href="#" class="footer-link">
-              <ion-icon name="chevron-forward"></ion-icon>
-
-              <span class="span">About us</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="#" class="footer-link">
-              <ion-icon name="chevron-forward"></ion-icon>
-
-              <span class="span">Services</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="#" class="footer-link">
-              <ion-icon name="chevron-forward"></ion-icon>
-
-              <span class="span">Pricing</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="#" class="footer-link">
-              <ion-icon name="chevron-forward"></ion-icon>
-
-              <span class="span">Blog</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="#" class="footer-link">
-              <ion-icon name="chevron-forward"></ion-icon>
-
-              <span class="span">Login</span>
-            </a>
-          </li>
-
-        </ul>
-
-        <ul class="footer-list">
-
-          <li>
-            <p class="footer-list-title">Useful Links</p>
-          </li>
-
-          <li>
-            <a href="#" class="footer-link">
-              <ion-icon name="chevron-forward"></ion-icon>
-
-              <span class="span">Terms of Services</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="#" class="footer-link">
-              <ion-icon name="chevron-forward"></ion-icon>
-
-              <span class="span">Privacy Policy</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="#" class="footer-link">
-              <ion-icon name="chevron-forward"></ion-icon>
-
-              <span class="span">Listing</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="#" class="footer-link">
-              <ion-icon name="chevron-forward"></ion-icon>
-
-              <span class="span">Contact</span>
-            </a>
-          </li>
-
-        </ul>
-
-        <ul class="footer-list">
-
-          <li>
-            <p class="footer-list-title">Contact Details</p>
-          </li>
-
-          <li class="footer-item">
-            <ion-icon name="location-outline"></ion-icon>
-
-            <address class="address">
-              C/54 Northwest Freeway,<br>
-              Suite 558,<br>
-              Houston, USA 485
-              <a href="#" class="address-link">View on Google map</a>
-            </address>
-          </li>
-
-          <li class="footer-item">
-            <ion-icon name="mail-outline"></ion-icon>
-
-            <a href="mailto:contact@example.com" class="footer-link">contact@example.com</a>
-          </li>
-
-          <li class="footer-item">
-            <ion-icon name="call-outline"></ion-icon>
-
-            <a href="tel:+152534468854" class="footer-link">+152 534-468-854</a>
-          </li>
-
-        </ul>
-
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <div class="container">
-
-        <p class="copyright">
-          &copy; 2022 Realvine. All Right Reserved by <a href="#" class="copyright-link">codewithsadee</a>.
-        </p>
-
-        <ul class="social-list">
-
-          <li>
-            <a href="#" class="social-link">
-              <ion-icon name="logo-facebook"></ion-icon>
-            </a>
-          </li>
-
-          <li>
-            <a href="#" class="social-link">
-              <ion-icon name="logo-instagram"></ion-icon>
-            </a>
-          </li>
-
-          <li>
-            <a href="#" class="social-link">
-              <ion-icon name="logo-twitter"></ion-icon>
-            </a>
-          </li>
-
-          <li>
-            <a href="#" class="social-link">
-              <ion-icon name="logo-linkedin"></ion-icon>
-            </a>
-          </li>
-
-        </ul>
-
-      </div>
-    </div>
-
-  </footer>
 
 
 
@@ -1013,7 +837,7 @@
   <!-- 
     - custom js link
   -->
-  <script src="./public/assets/js/script.js" defer></script>
+  <script src="/public/assets/js/script.js" defer></script>
 
   <!-- 
     - ionicon link

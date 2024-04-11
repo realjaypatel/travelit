@@ -1,5 +1,13 @@
 import prisma from "../lib/prisma.js";
 import jwt from "jsonwebtoken";
+import fileUpload from"express-fileupload";
+import path from 'path'
+import fs from 'fs'
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 
 export const getPosts = async (req, res) => {
   const query = req.query;
@@ -71,6 +79,21 @@ export const getPost = async (req, res) => {
 };
 
 export const addPost = async (req, res) => {
+  let images = []
+  try {
+    images = []
+
+
+  for(let x = 0; x < req.files.images.length;x++){
+  
+  let data = await FileUploader(req.files.images[x]);
+
+  images[x] = data
+  }
+  } catch (error) {
+    console.log(error)
+  }
+  // console.log(images,req.files.images)
 
   let body = {
     postData: {
@@ -84,7 +107,7 @@ export const addPost = async (req, res) => {
       property: req.body.property,
       latitude: req.body.latitude,
       longitude: req.body.longitude,
-      // images: images,
+      images: images,
     },
     postDetail: {
       desc: req.body.desc,
@@ -163,4 +186,38 @@ export const addPost_ejs = async (req, res) => {
     res.status(500).json({ message: "Failed to get user! update page" });
   }
 
+};
+
+
+
+let FileUploader = async (d) => {
+  let FileData = d
+  let name = `${Date.now()}-${Math.floor(10000000 + Math.random() * 90000000)}` + FileData.name
+  let p = path.join(__dirname, '..', 'uploads', name)
+
+  await new Promise((resolve, reject) => {
+    FileData.mv(p, (err) => {
+      if (err) {
+        reject(err);
+      }
+      resolve();
+    });
+  });
+  return name
+}
+const FileDelete = async (filePath) => {
+  try {
+    filePath = path.join(__dirname, '..', 'uploads', filePath)
+
+      await fs.promises.access(filePath, fs.constants.F_OK);
+
+      // Delete the file
+      await fs.promises.unlink(filePath);
+
+      console.log(`File ${filePath} deleted successfully.`);
+  } catch (error) {
+      // If the file doesn't exist or there's an error during deletion, log the error
+      console.error(`Error deleting file ${filePath}: ${error.message}`);
+
+  }
 };

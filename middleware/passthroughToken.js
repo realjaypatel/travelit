@@ -15,7 +15,6 @@ export const passthroughToken = (req, res, next) => {
 
   }
 
-
   next()
 
 

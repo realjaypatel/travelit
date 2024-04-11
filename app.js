@@ -22,6 +22,9 @@ app.use(fileUpload({ createParentPath: true }));
 app.use("/uploads", express.static('uploads'));
 app.use("/public", express.static('public'));
 
+
+
+
 app.use("/auth", authRoute);
 app.use("/user", userRoute);
 app.use("/post", postRoute);

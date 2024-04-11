@@ -26,7 +26,7 @@ function generateList() {
     li.appendChild(div);
     // ul.appendChild(li);
     var liToAdd = `
-        <li> </li>
+        <li> hello world</li>
 `
     a.innerHTML+= liToAdd;
     ul.appendChild(a);

@@ -6,7 +6,6 @@ export const Home = async (req, res) => {
     return res.render("Home",{user:''})
   }
   const id = req.userId;
-  console.log(req.userId)
   try {
     let user = await prisma.user.findUnique({
       where: { id },
@@ -53,7 +52,6 @@ export const Profile = async (req, res) => {
 export const Search = async (req, res) => {
 
   const query = req.query;
-  console.log(query)
   try {
     const posts = await prisma.post.findMany({
       where: {
@@ -67,25 +65,35 @@ export const Search = async (req, res) => {
         },
       },
     });
-
-//         const storeList = [
-//     {
-//         "type": "Feature",
-//         "geometry": {
-//           "type": "Point",
-//           "coordinates": [72.82952788802635, 18.920675417289807]
-//         },
-//         "properties": {
-//           "name": "Pizza outlet 1",
-//           "address": "Ground Floor, Strand Coffee House, PJ Ramchandani Marg, Apollo Bandar, Colaba, Mumbai, Maharashtra 400005, India",
-//           "phone": "23 2323 2323"
-//         }
-//       }
-// ]
-    return res.render('SearchPage',{data:posts,user:req.user});
-
+    
+    return res.render('SearchPage',{data:posts,user:req.userId});
   } catch (err) {
     console.log('err',err);
       }
+};
+
+export const getPost = async (req, res) => {
+  const id = req.params.id;
+  try {
+    const post = await prisma.post.findUnique({
+      where: { id },
+      include: {
+        postDetail: true,
+        user: {
+          select: {
+            username: true,
+            avatar: true,
+          },
+        },
+      },
+    });
+
+    return res.render('PostPage',{post:post,user:req.userId})
+
+
+} catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Failed to get post" });
+  }
 };
 

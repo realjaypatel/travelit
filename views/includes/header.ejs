@@ -1,7 +1,7 @@
 <header class="header" data-header>
     <div class="container">
 
-      <a href="#" class="logo">
+      <a href="/" class="logo">
         <ion-icon name="business-outline"></ion-icon> EventEase
       </a>
 
@@ -35,7 +35,7 @@
         </ul>
       </nav>
       <% if (user){%>
-        <a href="/profile" class="btn btn-secondary"><%=user.username%></a>
+        <a href="/profile" class="btn btn-secondary">profile</a>
         
     <% }else{%>
         <a href="/auth/register" class="btn btn-secondary">Signup</a>
@@ -50,9 +50,3 @@
 
     </div>
   </header>
-
-
-  <a href="/search">search</a>
-<a href='/profile'>profile</a>
-<a href="/auth/logout">logout</a>
-<a href="/auth/login">login</a>
